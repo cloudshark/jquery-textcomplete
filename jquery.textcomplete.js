@@ -243,7 +243,6 @@
         // span element into the textarea.
         // Consequently, the span element's position is the thing what we want.
 
-        if (this.el.selectionEnd === 0) return;
         var properties, css, $div, $span, position;
 
         properties = ['border-width', 'font-family', 'font-size', 'font-style',
