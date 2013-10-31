@@ -199,15 +199,18 @@
        * Keyup event handler.
        */
       onKeyup: function (e) {
-        var searchQuery, term;
+        var searchQuery, term, self;
 
         searchQuery = this.extractSearchQuery(this.getTextFromHeadToCaret());
         if (searchQuery.length) {
           term = searchQuery[1];
           if (this.term === term) return; // Ignore shift-key or something.
           this.term = term;
-          this.search(searchQuery);
+          self = this;
+          clearTimeout(this.timer);
+          this.timer = setTimeout(function() { self.search(searchQuery); }, 500)
         } else {
+          clearTimeout(this.timer);
           this.term = null;
           this.listView.deactivate();
         }
