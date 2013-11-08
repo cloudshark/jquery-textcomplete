@@ -169,7 +169,7 @@
           this.clearAtNext = false;
         }
         if (data.length) {
-          if (!this.listView.shown) {
+          if (!this.listView.shown && this.el === document.activeElement) {
             this.listView
                 .setPosition(this.getCaretPosition())
                 .clear()
